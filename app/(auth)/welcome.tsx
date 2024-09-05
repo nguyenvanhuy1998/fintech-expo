@@ -1,12 +1,12 @@
 import { View, Text } from "react-native";
 import React from "react";
 
-const Layout = () => {
+const Welcome = () => {
     return (
         <View>
-            <Text>Layout</Text>
+            <Text>Welcome</Text>
         </View>
     );
 };
 
-export default Layout;
+export default Welcome;
