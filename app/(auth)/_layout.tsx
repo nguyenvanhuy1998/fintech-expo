@@ -76,6 +76,28 @@ const Layout = () => {
                     presentation: "modal",
                 }}
             />
+            <Stack.Screen
+                name="verify/[phone]"
+                options={{
+                    title: "",
+                    headerBackTitle: "",
+                    headerShadowVisible: false,
+                    headerStyle: {
+                        backgroundColor: "#F5F5F5",
+                    },
+                    headerLeft: () => {
+                        return (
+                            <TouchableOpacity onPress={router.back}>
+                                <Ionicons
+                                    name="arrow-back"
+                                    size={34}
+                                    color={"#141518"}
+                                />
+                            </TouchableOpacity>
+                        );
+                    },
+                }}
+            />
         </Stack>
     );
 };

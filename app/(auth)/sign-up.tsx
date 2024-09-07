@@ -1,4 +1,4 @@
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
 import {
@@ -13,7 +13,14 @@ import {
 const SignUp = () => {
     const [countryCode, setCountryCode] = useState("+84");
     const [phoneNumber, setPhoneNumber] = useState("");
-    const onSignUp = () => {};
+    const onSignUp = () => {
+        router.push({
+            pathname: "/verify/[phone]",
+            params: {
+                phone: "0363121782",
+            },
+        });
+    };
     return (
         <KeyboardAvoidingView
             className="flex-1"
