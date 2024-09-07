@@ -81,6 +81,7 @@ module.exports = {
                     700: "#EBEBEB",
                     800: "#ADADAD",
                 },
+                dark: "#141518",
             },
         },
     },
