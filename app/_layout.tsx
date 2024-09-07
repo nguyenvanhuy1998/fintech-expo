@@ -4,13 +4,14 @@ import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import { ClerkProvider, ClerkLoaded } from "@clerk/clerk-expo";
 import "react-native-reanimated";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
 const publishableKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY!;
 
-export default function RootLayout() {
+const InitialLayout = () => {
     const [loaded] = useFonts({
         "Jakarta-Bold": require("../assets/fonts/PlusJakartaSans-Bold.ttf"),
         "Jakarta-ExtraBold": require("../assets/fonts/PlusJakartaSans-ExtraBold.ttf"),
@@ -26,7 +27,7 @@ export default function RootLayout() {
             SplashScreen.hideAsync();
         }
     }, [loaded]);
-    
+
     if (!publishableKey) {
         throw new Error(
             "Missing Publishable Key. Please set EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY in your .env"
@@ -35,29 +36,33 @@ export default function RootLayout() {
     if (!loaded) {
         return null;
     }
+    return (
+        <Stack>
+            <Stack.Screen name="index" options={{ headerShown: false }} />
+            <Stack.Screen
+                name="(auth)"
+                options={{
+                    headerShown: false,
+                }}
+            />
+            <Stack.Screen
+                name="(root)"
+                options={{
+                    headerShown: false,
+                }}
+            />
+            <Stack.Screen name="+not-found" />
+        </Stack>
+    );
+};
 
+export default function RootLayout() {
     return (
         <ClerkProvider publishableKey={publishableKey}>
             <ClerkLoaded>
-                <Stack>
-                    <Stack.Screen
-                        name="index"
-                        options={{ headerShown: false }}
-                    />
-                    <Stack.Screen
-                        name="(auth)"
-                        options={{
-                            headerShown: false,
-                        }}
-                    />
-                    <Stack.Screen
-                        name="(root)"
-                        options={{
-                            headerShown: false,
-                        }}
-                    />
-                    <Stack.Screen name="+not-found" />
-                </Stack>
+                <GestureHandlerRootView className="flex-1">
+                    <InitialLayout />
+                </GestureHandlerRootView>
             </ClerkLoaded>
         </ClerkProvider>
     );

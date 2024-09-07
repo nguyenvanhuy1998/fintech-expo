@@ -1,6 +1,7 @@
-import { View, Text } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
-import { Stack } from "expo-router";
+import { router, Stack } from "expo-router";
+import { Ionicons } from "@expo/vector-icons";
 
 const Layout = () => {
     return (
@@ -20,7 +21,23 @@ const Layout = () => {
             <Stack.Screen
                 name="sign-up"
                 options={{
-                    headerShown: false,
+                    title: "",
+                    headerBackTitle: "",
+                    headerShadowVisible: false,
+                    headerStyle: {
+                        backgroundColor: "#F5F5F5",
+                    },
+                    headerLeft: () => {
+                        return (
+                            <TouchableOpacity onPress={router.back}>
+                                <Ionicons
+                                    name="arrow-back"
+                                    size={34}
+                                    color={"#141518"}
+                                />
+                            </TouchableOpacity>
+                        );
+                    },
                 }}
             />
         </Stack>
