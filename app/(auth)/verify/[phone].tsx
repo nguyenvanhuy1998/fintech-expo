@@ -1,6 +1,6 @@
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
-import React, { Fragment, useState } from "react";
 import { Link, useLocalSearchParams } from "expo-router";
+import React, { Fragment, useEffect, useState } from "react";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import {
     CodeField,
     Cursor,
@@ -10,8 +10,29 @@ import {
 
 const CELL_COUNT = 6;
 const VerifyPhoneNumber = () => {
-    const { phone } = useLocalSearchParams<{ phone: string }>();
+    const { phone, signIn } = useLocalSearchParams<{
+        phone: string;
+        signIn: string;
+    }>();
     const [code, setCode] = useState("");
+    const ref = useBlurOnFulfill({ value: code, cellCount: CELL_COUNT });
+    const [props, getCellOnLayoutHandler] = useClearByFocusCell({
+        value: code,
+        setValue: setCode,
+    });
+
+    useEffect(() => {
+        if (code.length === 6) {
+            signIn === "true" ? verifySignIn() : verifyCode();
+        }
+    }, [code]);
+
+    const verifySignIn = () => {
+        console.log("verifySignIn");
+    };
+    const verifyCode = () => {
+        console.log("verifyCode");
+    };
 
     return (
         <View className="flex-1 bg-background p-4">
@@ -23,17 +44,21 @@ const VerifyPhoneNumber = () => {
             </Text>
 
             <CodeField
+                ref={ref}
+                {...props}
+                value={code}
+                onChangeText={setCode}
                 cellCount={CELL_COUNT}
                 rootStyle={styles.codeFieldRoot}
                 keyboardType="number-pad"
-                value={code}
-                onChangeText={setCode}
+                textContentType="oneTimeCode"
                 renderCell={({ index, symbol, isFocused }) => (
                     <Fragment key={index}>
                         <View
                             className={`w-[45px] h-[60px] bg-lightGray items-center justify-center rounded-lg ${
                                 isFocused && "pb-2"
                             }`}
+                            onLayout={getCellOnLayoutHandler(index)}
                         >
                             <Text className="text-4xl text-dark text-center font-Jakarta">
                                 {symbol || (isFocused ? <Cursor /> : null)}
