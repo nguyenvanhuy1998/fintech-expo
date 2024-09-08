@@ -11,15 +11,18 @@ import {
 } from "react-native";
 
 enum SignInType {
-    Phone,
     Email,
     Google,
     Apple,
 }
 const SignIn = () => {
-    const [countryCode, setCountryCode] = useState("+84");
-    const [phoneNumber, setPhoneNumber] = useState("");
-    const onSignIn = (type: SignInType) => {};
+    const [email, setEmail] = useState("");
+
+    const onSignIn = (type: SignInType) => {
+        if (type === SignInType.Email) {
+            console.log("Login Email");
+        }
+    };
     return (
         <KeyboardAvoidingView
             className="flex-1"
@@ -31,30 +34,23 @@ const SignIn = () => {
             <View className="flex-1 p-4 bg-background">
                 <Text className="text-4xl font-JakartaBold">Welcome back</Text>
                 <Text className="text-base mt-5 text-gray font-Jakarta">
-                    Enter the phone number associated with your account
+                    Enter the email associated with your account
                 </Text>
-                <View className="mt-10 mb-10 flex-row">
-                    <TextInput
-                        className="bg-lightGray p-5 rounded-2xl text-xl mr-2 font-Jakarta"
-                        placeholder="Country code"
-                        placeholderTextColor={"#626D77"}
-                        value={countryCode}
-                    />
-                    <TextInput
-                        className="bg-lightGray p-5 rounded-2xl text-xl flex-1 font-Jakarta"
-                        placeholder="Phone number"
-                        placeholderTextColor={"#626D77"}
-                        keyboardType="numeric"
-                        value={phoneNumber}
-                        onChangeText={setPhoneNumber}
-                    />
-                </View>
+                <TextInput
+                    className="bg-lightGray p-5 rounded-2xl text-xl mr-2 font-Jakarta mt-10 mb-4"
+                    placeholder="Enter email"
+                    keyboardType="email-address"
+                    placeholderTextColor={"#626D77"}
+                    value={email}
+                    autoCapitalize="none"
+                    onChangeText={setEmail}
+                />
                 <TouchableOpacity
-                    disabled={!phoneNumber}
+                    disabled={!email}
                     className={`p-3 h-[60px] rounded-full justify-center items-center mb-5 ${
-                        phoneNumber ? "bg-primary-500" : "bg-primary-400"
+                        email ? "bg-primary-500" : "bg-primary-400"
                     }`}
-                    onPress={() => onSignIn(SignInType.Phone)}
+                    onPress={() => onSignIn(SignInType.Email)}
                 >
                     <Text className="text-xl text-white font-JakartaMedium">
                         Continue
@@ -66,18 +62,6 @@ const SignIn = () => {
                     <View className={`flex-1 h-[1px] bg-gray`} />
                 </View>
 
-                <TouchableOpacity
-                    onPress={() => onSignIn(SignInType.Email)}
-                    style={{
-                        gap: 16,
-                    }}
-                    className="bg-white p-[10px] rounded-full mt-5 h-[60px] flex flex-row items-center justify-center"
-                >
-                    <Ionicons name="mail" size={24} color={"#000"} />
-                    <Text className="text-dark text-base font-JakartaMedium">
-                        Continue with Email
-                    </Text>
-                </TouchableOpacity>
                 <TouchableOpacity
                     onPress={() => onSignIn(SignInType.Google)}
                     style={{
