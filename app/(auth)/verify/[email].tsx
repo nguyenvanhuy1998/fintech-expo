@@ -1,6 +1,7 @@
-import { Link, useLocalSearchParams } from "expo-router";
+import { isClerkAPIResponseError, useSignUp } from "@clerk/clerk-expo";
+import { Link, router, useLocalSearchParams } from "expo-router";
 import React, { Fragment, useEffect, useState } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Alert, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import {
     CodeField,
     Cursor,
@@ -9,9 +10,9 @@ import {
 } from "react-native-confirmation-code-field";
 
 const CELL_COUNT = 6;
-const VerifyPhoneNumber = () => {
-    const { phone, signIn } = useLocalSearchParams<{
-        phone: string;
+const VerifyEmail = () => {
+    const { email, signIn } = useLocalSearchParams<{
+        email: string;
         signIn: string;
     }>();
     const [code, setCode] = useState("");
@@ -20,6 +21,7 @@ const VerifyPhoneNumber = () => {
         value: code,
         setValue: setCode,
     });
+    const { isLoaded, signUp, setActive } = useSignUp();
 
     useEffect(() => {
         if (code.length === 6) {
@@ -30,8 +32,30 @@ const VerifyPhoneNumber = () => {
     const verifySignIn = () => {
         console.log("verifySignIn");
     };
-    const verifyCode = () => {
-        console.log("verifyCode");
+    const verifyCode = async () => {
+        if (!isLoaded) {
+            return;
+        }
+        try {
+            const completeSignUp = await signUp.attemptEmailAddressVerification(
+                {
+                    code: code,
+                }
+            );
+            if (completeSignUp.status === "complete") {
+                await setActive({
+                    session: completeSignUp.createdSessionId,
+                });
+                router.replace("/(root)/(tabs)/home");
+            } else {
+                console.error(JSON.stringify(completeSignUp, null, 2));
+            }
+        } catch (err) {
+            console.log(JSON.stringify(err, null, 2));
+            if (isClerkAPIResponseError(err)) {
+                Alert.alert("Error", err.errors[0].longMessage);
+            }
+        }
     };
 
     return (
@@ -40,7 +64,7 @@ const VerifyPhoneNumber = () => {
                 6-digit code
             </Text>
             <Text className="text-xl mt-5 font-Jakarta text-gray">
-                Code sent to {phone} unless you already have an account
+                Code sent to {email} unless you already have an account
             </Text>
 
             <CodeField
@@ -93,4 +117,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default VerifyPhoneNumber;
+export default VerifyEmail;

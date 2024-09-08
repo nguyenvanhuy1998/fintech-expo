@@ -1,7 +1,7 @@
-import { View, Text, TouchableOpacity } from "react-native";
-import React from "react";
-import { Link, router, Stack } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
+import { Link, router, Stack } from "expo-router";
+import React from "react";
+import { TouchableOpacity } from "react-native";
 
 const Layout = () => {
     return (
@@ -77,7 +77,7 @@ const Layout = () => {
                 }}
             />
             <Stack.Screen
-                name="verify/[phone]"
+                name="verify/[email]"
                 options={{
                     title: "",
                     headerBackTitle: "",
