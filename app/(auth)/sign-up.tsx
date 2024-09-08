@@ -11,10 +11,17 @@ import {
     TouchableOpacity,
     View,
 } from "react-native";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
+export interface FormData {
+    email: string;
+    password: string;
+}
 const SignUp = () => {
-    const [email, setEmail] = useState("");
-
+    const [form, setForm] = useState<FormData>({
+        email: "",
+        password: "",
+    });
     const { isLoaded, signUp } = useSignUp();
     const onSignUp = async () => {
         if (!isLoaded) {
@@ -22,7 +29,8 @@ const SignUp = () => {
         }
         try {
             await signUp.create({
-                emailAddress: email,
+                emailAddress: form.email,
+                password: form.password,
             });
             await signUp.prepareEmailAddressVerification({
                 strategy: "email_code",
@@ -30,7 +38,7 @@ const SignUp = () => {
             router.push({
                 pathname: "/verify/[email]",
                 params: {
-                    email,
+                    email: form.email,
                 },
             });
         } catch (err) {
@@ -41,10 +49,12 @@ const SignUp = () => {
         }
     };
     return (
-        <KeyboardAvoidingView
-            className="flex-1"
-            behavior="padding"
-            keyboardVerticalOffset={Platform.OS === "ios" ? 80 : 0}
+        <KeyboardAwareScrollView
+            alwaysBounceVertical={false}
+            showsVerticalScrollIndicator={false}
+            contentContainerStyle={{
+                flexGrow: 1,
+            }}
         >
             <StatusBar style="dark" />
             <View className="flex-1 p-4 bg-background">
@@ -55,28 +65,47 @@ const SignUp = () => {
                     Enter your phone number. We will send you a confirmation
                     code there
                 </Text>
-                <TextInput
-                    className="bg-lightGray p-5 rounded-2xl text-xl mr-2 font-Jakarta mt-10 mb-4"
-                    placeholder="Enter email"
-                    keyboardType="email-address"
-                    placeholderTextColor={"#626D77"}
-                    value={email}
-                    autoCapitalize="none"
-                    onChangeText={setEmail}
-                />
+                <View className="mt-5 mb-5">
+                    <TextInput
+                        className="bg-lightGray p-5 rounded-2xl text-xl mr-2 font-Jakarta mb-4"
+                        placeholder="Enter email"
+                        keyboardType="email-address"
+                        placeholderTextColor={"#626D77"}
+                        value={form.email}
+                        autoCapitalize="none"
+                        onChangeText={(value) =>
+                            setForm({
+                                ...form,
+                                email: value,
+                            })
+                        }
+                    />
+                    <TextInput
+                        className="bg-lightGray p-5 rounded-2xl text-xl mr-2 font-Jakarta mb-4"
+                        placeholder="Enter password"
+                        placeholderTextColor={"#626D77"}
+                        value={form.password}
+                        autoCapitalize="none"
+                        secureTextEntry
+                        onChangeText={(value) =>
+                            setForm({
+                                ...form,
+                                password: value,
+                            })
+                        }
+                    />
+                </View>
+
                 <Link href={"/(auth)/sign-in"} replace asChild>
                     <TouchableOpacity>
-                        <Text className="text-primary-500 text-base font-JakartaMedium text-center">
+                        <Text className="text-primary-500 mb-5 text-base font-JakartaMedium text-center">
                             Already have an account? Log in
                         </Text>
                     </TouchableOpacity>
                 </Link>
-                <View className="flex-1" />
+
                 <TouchableOpacity
-                    disabled={!email}
-                    className={`p-3 h-[60px] rounded-full justify-center items-center mb-5 ${
-                        email ? "bg-primary-500" : "bg-primary-400"
-                    }`}
+                    className={`p-3 h-[60px] rounded-full justify-center items-center mb-5 bg-primary-500`}
                     onPress={onSignUp}
                 >
                     <Text className="text-xl text-white font-JakartaMedium">
@@ -84,7 +113,7 @@ const SignUp = () => {
                     </Text>
                 </TouchableOpacity>
             </View>
-        </KeyboardAvoidingView>
+        </KeyboardAwareScrollView>
     );
 };
 

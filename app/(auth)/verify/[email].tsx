@@ -11,9 +11,8 @@ import {
 
 const CELL_COUNT = 6;
 const VerifyEmail = () => {
-    const { email, signIn } = useLocalSearchParams<{
+    const { email } = useLocalSearchParams<{
         email: string;
-        signIn: string;
     }>();
     const [code, setCode] = useState("");
     const ref = useBlurOnFulfill({ value: code, cellCount: CELL_COUNT });
@@ -25,13 +24,10 @@ const VerifyEmail = () => {
 
     useEffect(() => {
         if (code.length === 6) {
-            signIn === "true" ? verifySignIn() : verifyCode();
+            verifyCode();
         }
     }, [code]);
 
-    const verifySignIn = () => {
-        console.log("verifySignIn");
-    };
     const verifyCode = async () => {
         if (!isLoaded) {
             return;
