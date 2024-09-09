@@ -1,38 +1,94 @@
-import { View, Text } from "react-native";
-import React from "react";
+import { FontAwesome } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
+import { BlurView } from "expo-blur";
+import React from "react";
+import { CustomHeader } from "@/components";
 
 const Layout = () => {
     return (
-        <Tabs>
+        <Tabs
+            screenOptions={{
+                tabBarActiveTintColor: "#3D38ED",
+                tabBarStyle: {
+                    backgroundColor: "transparent",
+                    position: "absolute",
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    elevation: 0,
+                    borderTopWidth: 0,
+                },
+                tabBarBackground: () => (
+                    <BlurView
+                        intensity={100}
+                        tint="extraLight"
+                        style={{
+                            flex: 1,
+                            backgroundColor: "rgba(0,0,0,0.5)",
+                        }}
+                    />
+                ),
+            }}
+        >
             <Tabs.Screen
                 name="home"
                 options={{
-                    headerShown: false,
+                    title: "Home",
+                    tabBarIcon: ({ size, color }) => (
+                        <FontAwesome
+                            name="registered"
+                            size={size}
+                            color={color}
+                        />
+                    ),
+                    header: () => <CustomHeader />,
+                    headerTransparent: true,
                 }}
             />
             <Tabs.Screen
                 name="invest"
                 options={{
-                    headerShown: false,
+                    title: "Invest",
+                    tabBarIcon: ({ size, color }) => (
+                        <FontAwesome
+                            name="line-chart"
+                            size={size}
+                            color={color}
+                        />
+                    ),
                 }}
             />
             <Tabs.Screen
                 name="transfers"
                 options={{
-                    headerShown: false,
+                    title: "Transfers",
+                    tabBarIcon: ({ size, color }) => (
+                        <FontAwesome
+                            name="exchange"
+                            size={size}
+                            color={color}
+                        />
+                    ),
                 }}
             />
             <Tabs.Screen
                 name="crypto"
                 options={{
-                    headerShown: false,
+                    title: "Crypto",
+                    tabBarIcon: ({ size, color }) => (
+                        <FontAwesome name="bitcoin" size={size} color={color} />
+                    ),
+                    header: () => <CustomHeader />,
+                    headerTransparent: true,
                 }}
             />
             <Tabs.Screen
                 name="lifestyle"
                 options={{
-                    headerShown: false,
+                    title: "Lifestyle",
+                    tabBarIcon: ({ size, color }) => (
+                        <FontAwesome name="th" size={size} color={color} />
+                    ),
                 }}
             />
         </Tabs>
