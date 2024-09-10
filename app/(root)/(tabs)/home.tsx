@@ -1,4 +1,4 @@
-import { DropDown, RoundBtn } from "@/components";
+import { DropDown, RoundBtn, WidgetList } from "@/components";
 import { useBalanceStore } from "@/store/balanceStore";
 import { Ionicons } from "@expo/vector-icons";
 import { useHeaderHeight } from "@react-navigation/elements";
@@ -94,6 +94,8 @@ const Home = () => {
                     );
                 })}
             </View>
+            <Text className="text-xl font-JakartaBold m-5 mb-2.5">Widgets</Text>
+            <WidgetList />
         </ScrollView>
     );
 };
