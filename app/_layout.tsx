@@ -6,11 +6,13 @@ import { ClerkProvider, ClerkLoaded } from "@clerk/clerk-expo";
 import "react-native-reanimated";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { tokenCache } from "@/lib/auth";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
 const publishableKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY!;
+const queryClient = new QueryClient();
 
 const InitialLayout = () => {
     const [loaded] = useFonts({
@@ -60,11 +62,13 @@ const InitialLayout = () => {
 export default function RootLayout() {
     return (
         <ClerkProvider publishableKey={publishableKey} tokenCache={tokenCache}>
-            <ClerkLoaded>
-                <GestureHandlerRootView className="flex-1">
-                    <InitialLayout />
-                </GestureHandlerRootView>
-            </ClerkLoaded>
+            <QueryClientProvider client={queryClient}>
+                <ClerkLoaded>
+                    <GestureHandlerRootView className="flex-1">
+                        <InitialLayout />
+                    </GestureHandlerRootView>
+                </ClerkLoaded>
+            </QueryClientProvider>
         </ClerkProvider>
     );
 }
