@@ -8,6 +8,7 @@ import { Link } from "expo-router";
 
 const Welcome = () => {
     const [assets] = useAssets([videos.intro]);
+
     return (
         <View className="flex-1 justify-between">
             <StatusBar style="light" />

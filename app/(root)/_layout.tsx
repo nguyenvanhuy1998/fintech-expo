@@ -48,6 +48,12 @@ const Layout = () => {
                     ),
                 }}
             />
+            <Stack.Screen
+                name="(modals)"
+                options={{
+                    headerShown: false,
+                }}
+            />
         </Stack>
     );
 };

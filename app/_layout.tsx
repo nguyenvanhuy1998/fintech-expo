@@ -7,6 +7,7 @@ import "react-native-reanimated";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { tokenCache } from "@/lib/auth";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { UserInactivityProvider } from "@/context";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -64,9 +65,11 @@ export default function RootLayout() {
         <ClerkProvider publishableKey={publishableKey} tokenCache={tokenCache}>
             <QueryClientProvider client={queryClient}>
                 <ClerkLoaded>
-                    <GestureHandlerRootView className="flex-1">
-                        <InitialLayout />
-                    </GestureHandlerRootView>
+                    <UserInactivityProvider>
+                        <GestureHandlerRootView className="flex-1">
+                            <InitialLayout />
+                        </GestureHandlerRootView>
+                    </UserInactivityProvider>
                 </ClerkLoaded>
             </QueryClientProvider>
         </ClerkProvider>
