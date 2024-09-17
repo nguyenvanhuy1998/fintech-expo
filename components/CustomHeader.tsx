@@ -18,11 +18,13 @@ const CustomHeader = () => {
             }}
         >
             <View className="flex flex-row items-center justify-center h-[60px] gap-2.5 px-5 bg-transparent">
-                <TouchableOpacity className="w-10 h-10 rounded-[20px] bg-gray items-center justify-center">
-                    <Text className="text-white font-JakartaMedium text-base">
-                        SG
-                    </Text>
-                </TouchableOpacity>
+                <Link href={"/(modals)/account"} asChild>
+                    <TouchableOpacity className="w-10 h-10 rounded-[20px] bg-gray items-center justify-center">
+                        <Text className="text-white font-JakartaMedium text-base">
+                            SG
+                        </Text>
+                    </TouchableOpacity>
+                </Link>
                 <View className="flex flex-row flex-1 items-center justify-center bg-lightGray rounded-full">
                     <Ionicons
                         style={{

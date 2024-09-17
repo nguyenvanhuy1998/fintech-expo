@@ -4,6 +4,7 @@ import React from "react";
 
 const Page = () => {
     const { isSignedIn } = useAuth();
+    console.log({ isSignedIn });
     if (isSignedIn) {
         return <Redirect href="/(root)/(tabs)/home" />;
     }
