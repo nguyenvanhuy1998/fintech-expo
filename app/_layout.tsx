@@ -2,12 +2,14 @@ import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
-import { ClerkProvider, ClerkLoaded } from "@clerk/clerk-expo";
+import { ClerkProvider, ClerkLoaded, useAuth } from "@clerk/clerk-expo";
 import "react-native-reanimated";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { tokenCache } from "@/lib/auth";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { UserInactivityProvider } from "@/context";
+import { ActivityIndicator, View } from "react-native";
+import { Colors } from "@/constants";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -25,6 +27,7 @@ const InitialLayout = () => {
         Jakarta: require("../assets/fonts/PlusJakartaSans-Regular.ttf"),
         "Jakarta-SemiBold": require("../assets/fonts/PlusJakartaSans-SemiBold.ttf"),
     });
+    const { isLoaded } = useAuth();
 
     useEffect(() => {
         if (loaded) {
@@ -37,8 +40,12 @@ const InitialLayout = () => {
             "Missing Publishable Key. Please set EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY in your .env"
         );
     }
-    if (!loaded) {
-        return null;
+    if (!loaded || !isLoaded) {
+        return (
+            <View className="flex-1 items-center justify-center">
+                <ActivityIndicator size={"large"} color={Colors.primary} />
+            </View>
+        );
     }
     return (
         <Stack>
