@@ -1,7 +1,7 @@
 import { useAuth, useUser } from "@clerk/clerk-expo";
 import { Ionicons } from "@expo/vector-icons";
 import { BlurView } from "expo-blur";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
     Image,
     StyleSheet,
@@ -13,13 +13,38 @@ import {
 import * as ImagePicker from "expo-image-picker";
 import { router } from "expo-router";
 import { StatusBar } from "expo-status-bar";
+import { getAppIcon, setAppIcon } from "expo-dynamic-app-icon";
 
+const ICONS = [
+    {
+        name: "Default",
+        icon: require("@/assets/images/icon.png"),
+    },
+    {
+        name: "Dark",
+        icon: require("@/assets/images/icon-dark.png"),
+    },
+    {
+        name: "Vivid",
+        icon: require("@/assets/images/icon-vivid.png"),
+    },
+];
 const Account = () => {
     const { user } = useUser();
     const { signOut } = useAuth();
     const [edit, setEdit] = useState(false);
     const [firstName, setFirstName] = useState(user?.firstName);
     const [lastName, setLastName] = useState(user?.lastName);
+    const [activeIcon, setActiveIcon] = useState("Default");
+
+    useEffect(() => {
+        const loadCurrentIconPref = () => {
+            const icon = getAppIcon();
+            console.log("current icon ref", icon);
+            setActiveIcon(icon);
+        };
+        loadCurrentIconPref();
+    }, []);
 
     const onCaptureImage = async () => {
         let result = await ImagePicker.launchImageLibraryAsync({
@@ -52,6 +77,10 @@ const Account = () => {
     const onSignOut = () => {
         signOut();
         router.replace("/(auth)/welcome");
+    };
+    const onChangeAppIcon = async (icon: string) => {
+        setAppIcon(icon.toLowerCase());
+        setActiveIcon(icon);
     };
     return (
         <BlurView
@@ -189,6 +218,38 @@ const Account = () => {
                         <Text className="text-white text-[12px]">14</Text>
                     </View>
                 </TouchableOpacity>
+            </View>
+            <View style={styles.actions}>
+                {ICONS.map((icon) => (
+                    <TouchableOpacity
+                        key={icon.name}
+                        className="p-3.5 flex flex-row"
+                        style={{
+                            gap: 20,
+                        }}
+                        onPress={() => onChangeAppIcon(icon.name)}
+                    >
+                        <View
+                            className="flex flex-row flex-1 items-center"
+                            style={{
+                                gap: 20,
+                            }}
+                        >
+                            <Image source={icon.icon} className="w-6 h-6" />
+                            <Text className="text-lg text-white font-Jakarta">
+                                {icon.name}
+                            </Text>
+                        </View>
+                        {activeIcon.toLowerCase() ===
+                            icon.name.toLowerCase() && (
+                            <Ionicons
+                                name="checkmark"
+                                size={24}
+                                color={"#fff"}
+                            />
+                        )}
+                    </TouchableOpacity>
+                ))}
             </View>
         </BlurView>
     );

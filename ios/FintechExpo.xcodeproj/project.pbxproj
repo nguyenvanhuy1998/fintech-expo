@@ -10,15 +10,22 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		2BD3DABB93114FDCB0C83B46 /* dark-Icon-60x60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E3ABCCF9DCC47E0AD39DF8F /* dark-Icon-60x60@2x.png */; };
+		347E167DBAFF4ABFADE8C526 /* vivid-Icon-60x60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03B545E852454CB188A2680A /* vivid-Icon-60x60@2x.png */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
 		5249B139611C9BA4B3850A48 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = A819B04017FBB4D9C52F774E /* PrivacyInfo.xcprivacy */; };
+		72F777F94441433296BB088C /* default-Icon-60x60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EFB4A4756CAD455D8AABEED0 /* default-Icon-60x60@3x.png */; };
+		823DC718ACAA44499A118DA6 /* dark-Icon-60x60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E35F5140721D49D98F1F0E61 /* dark-Icon-60x60@3x.png */; };
 		96905EF65AED1B983A6B3ABC /* libPods-FintechExpo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58EEBF8E8E6FB1BC6CAF49B5 /* libPods-FintechExpo.a */; };
 		9EB6CA7D95CB4AC998E5136D /* noop-file.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A642630426461996D10872 /* noop-file.swift */; };
 		B18059E884C0ABDD17F3DC3D /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC715A2D49A985799AEE119 /* ExpoModulesProvider.swift */; };
+		B396CD3217514630847FE689 /* default-Icon-60x60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6B8C97DFA642F98B80D950 /* default-Icon-60x60@2x.png */; };
+		B9E164C77F084593BC9EBE0E /* vivid-Icon-60x60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C15DD3A462144978865BFC2 /* vivid-Icon-60x60@3x.png */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		03B545E852454CB188A2680A /* vivid-Icon-60x60@2x.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "vivid-Icon-60x60@2x.png"; path = "FintechExpo/DynamicAppIcons/vivid-Icon-60x60@2x.png"; sourceTree = "<group>"; };
 		0C79AA6E58514F6E8EEE066E /* FintechExpo-Bridging-Header.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = "FintechExpo-Bridging-Header.h"; path = "FintechExpo/FintechExpo-Bridging-Header.h"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* FintechExpo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FintechExpo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = FintechExpo/AppDelegate.h; sourceTree = "<group>"; };
@@ -27,13 +34,18 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = FintechExpo/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = FintechExpo/main.m; sourceTree = "<group>"; };
 		58EEBF8E8E6FB1BC6CAF49B5 /* libPods-FintechExpo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FintechExpo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C15DD3A462144978865BFC2 /* vivid-Icon-60x60@3x.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "vivid-Icon-60x60@3x.png"; path = "FintechExpo/DynamicAppIcons/vivid-Icon-60x60@3x.png"; sourceTree = "<group>"; };
 		68A642630426461996D10872 /* noop-file.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = "noop-file.swift"; path = "FintechExpo/noop-file.swift"; sourceTree = "<group>"; };
 		6C2E3173556A471DD304B334 /* Pods-FintechExpo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FintechExpo.debug.xcconfig"; path = "Target Support Files/Pods-FintechExpo/Pods-FintechExpo.debug.xcconfig"; sourceTree = "<group>"; };
 		7A4D352CD337FB3A3BF06240 /* Pods-FintechExpo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FintechExpo.release.xcconfig"; path = "Target Support Files/Pods-FintechExpo/Pods-FintechExpo.release.xcconfig"; sourceTree = "<group>"; };
+		9E3ABCCF9DCC47E0AD39DF8F /* dark-Icon-60x60@2x.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "dark-Icon-60x60@2x.png"; path = "FintechExpo/DynamicAppIcons/dark-Icon-60x60@2x.png"; sourceTree = "<group>"; };
 		A819B04017FBB4D9C52F774E /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = FintechExpo/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = FintechExpo/SplashScreen.storyboard; sourceTree = "<group>"; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
+		CF6B8C97DFA642F98B80D950 /* default-Icon-60x60@2x.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "default-Icon-60x60@2x.png"; path = "FintechExpo/DynamicAppIcons/default-Icon-60x60@2x.png"; sourceTree = "<group>"; };
+		E35F5140721D49D98F1F0E61 /* dark-Icon-60x60@3x.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "dark-Icon-60x60@3x.png"; path = "FintechExpo/DynamicAppIcons/dark-Icon-60x60@3x.png"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		EFB4A4756CAD455D8AABEED0 /* default-Icon-60x60@3x.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "default-Icon-60x60@3x.png"; path = "FintechExpo/DynamicAppIcons/default-Icon-60x60@3x.png"; sourceTree = "<group>"; };
 		FAC715A2D49A985799AEE119 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-FintechExpo/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -62,6 +74,7 @@
 				68A642630426461996D10872 /* noop-file.swift */,
 				0C79AA6E58514F6E8EEE066E /* FintechExpo-Bridging-Header.h */,
 				A819B04017FBB4D9C52F774E /* PrivacyInfo.xcprivacy */,
+				E57D8CD1BBB0418EA806DFD6 /* DynamicAppIcons */,
 			);
 			name = FintechExpo;
 			sourceTree = "<group>";
@@ -139,6 +152,20 @@
 			name = ExpoModulesProviders;
 			sourceTree = "<group>";
 		};
+		E57D8CD1BBB0418EA806DFD6 /* DynamicAppIcons */ = {
+			isa = PBXGroup;
+			children = (
+				CF6B8C97DFA642F98B80D950 /* default-Icon-60x60@2x.png */,
+				EFB4A4756CAD455D8AABEED0 /* default-Icon-60x60@3x.png */,
+				9E3ABCCF9DCC47E0AD39DF8F /* dark-Icon-60x60@2x.png */,
+				E35F5140721D49D98F1F0E61 /* dark-Icon-60x60@3x.png */,
+				03B545E852454CB188A2680A /* vivid-Icon-60x60@2x.png */,
+				5C15DD3A462144978865BFC2 /* vivid-Icon-60x60@3x.png */,
+			);
+			name = DynamicAppIcons;
+			path = "";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -204,6 +231,12 @@
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
 				5249B139611C9BA4B3850A48 /* PrivacyInfo.xcprivacy in Resources */,
+				B396CD3217514630847FE689 /* default-Icon-60x60@2x.png in Resources */,
+				72F777F94441433296BB088C /* default-Icon-60x60@3x.png in Resources */,
+				2BD3DABB93114FDCB0C83B46 /* dark-Icon-60x60@2x.png in Resources */,
+				823DC718ACAA44499A118DA6 /* dark-Icon-60x60@3x.png in Resources */,
+				347E167DBAFF4ABFADE8C526 /* vivid-Icon-60x60@2x.png in Resources */,
+				B9E164C77F084593BC9EBE0E /* vivid-Icon-60x60@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

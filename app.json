@@ -46,6 +46,23 @@
                 {
                     "photosPermission": "The app accesses your photos to let you share them with your friends."
                 }
+            ],
+            [
+                "expo-dynamic-app-icon",
+                {
+                    "default": {
+                        "image": "./assets/images/icon.png", // icon path
+                        "prerendered": true // for ios UIPrerenderedIcon option
+                    },
+                    "dark": {
+                        "image": "./assets/images/icon-dark.png", // icon path
+                        "prerendered": true // for ios UIPrerenderedIcon option
+                    },
+                    "vivid": {
+                        "image": "./assets/images/icon-vivid.png", // icon path
+                        "prerendered": true // for ios UIPrerenderedIcon option
+                    }
+                }
             ]
         ],
         "experiments": {
