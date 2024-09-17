@@ -12,6 +12,7 @@ import {
 } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 import { router } from "expo-router";
+import { StatusBar } from "expo-status-bar";
 
 const Account = () => {
     const { user } = useUser();
@@ -62,6 +63,7 @@ const Account = () => {
                 backgroundColor: "rgba(0,0,0,0.5)",
             }}
         >
+            <StatusBar style="light" />
             <View className="items-center">
                 <TouchableOpacity
                     onPress={onCaptureImage}
